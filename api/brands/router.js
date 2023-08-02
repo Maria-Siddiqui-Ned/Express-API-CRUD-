@@ -1,13 +1,14 @@
 const app = require('express')
 const router = app.Router()
-const { getAllBrands } = require ('./controller')
+const { getAllBrands, getBrandByID, getBrandByName, createBrand, updateBrand, deleteBrand } = require('./controller')
 
 
 router.get ('/get-all-brands', getAllBrands )
-router.get ('/get-brand-by-id', getAllBrands )
-router.get ('/get-brand-by-name', getAllBrands )
-router.post ('/create-brand', getAllBrands )
-router.put ('/update-brand', getAllBrands )
-router.delete ('/delete-brand', getAllBrands )
+router.get ('/get-brand-by-id', getBrandByID )
+router.get ('/get-brand-by-name', getBrandByName )
+router.post ('/create-brand', createBrand )
+router.put ('/update-brand', updateBrand )
+router.delete ('/delete-brand', deleteBrand )
 
 module.exports = router
+
