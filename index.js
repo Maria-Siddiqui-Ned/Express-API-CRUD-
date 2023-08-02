@@ -6,9 +6,15 @@ const port = process.env.SERVER_PORT
 const BrandRouter = require('./api/brands/router')
 const CategoryRouter = require('./api/category/router')
 const ProductRouter = require('./api/products/router')
-
+const cors = require('cors')
 
 app.use(express.json())
+app.use(
+  cors({
+    origin : 'http://localhost:5173/',
+    credentials : true
+  })
+)
 app.use ('/api' , require('./api/users/router'))
 app.use('/api', BrandRouter)
 app.use('/api', CategoryRouter)
