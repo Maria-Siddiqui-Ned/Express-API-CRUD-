@@ -63,9 +63,9 @@ const getBrandByName = async (req, res) => {
 
 //create Brand
 const createBrand = async (req, res) => {
-    const { BrandName, BrandCategory } = req.body
+    const { BrandName, BrandCategory, BrandImage } = req.body
 
-    if (!BrandName || !BrandCategory) {
+    if (!BrandName || !BrandCategory || BrandImage) {
         res.status(403).json({
             message: "Missing Required Field"
         })
@@ -83,7 +83,7 @@ const createBrand = async (req, res) => {
             }
 
             else {
-                await Brand.create({ BrandName, BrandCategory })
+                await Brand.create({ BrandName, BrandCategory, BrandImage })
                 const allBrands = await Brand.find()
 
                 res.json({
@@ -105,10 +105,10 @@ const createBrand = async (req, res) => {
 
 //update Brand 
 const updateBrand = async (req, res) => {
-    const { _id, BrandName, BrandCategory } = req.body
+    const { _id, BrandName, BrandCategory, BrandImage } = req.body
 
     const filter = { _id };
-    const update = { BrandName, BrandCategory };
+    const update = { BrandName, BrandCategory, BrandImage };
 
     try {
         await connect(process.env.MONGO_URL)
